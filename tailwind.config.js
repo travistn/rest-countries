@@ -11,6 +11,10 @@ module.exports = {
         'color-very-light-gray': 'hsl(0, 0%, 98%)',
         'color-white': 'hsl(0, 0%, 100%)',
       },
+      boxShadow: {
+        header: '0px 2px 4px rgba(0, 0, 0, 0.0562443)',
+        search: '0px 2px 9px rgba(0, 0, 0, 0.0532439);',
+      },
     },
   },
   plugins: [],
