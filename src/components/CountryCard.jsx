@@ -12,7 +12,7 @@ const CountryCard = ({ country }) => {
         <h5 className='text-[18px] font-extrabold leading-[26px]'>{country?.name.common}</h5>
         <div className='flex flex-col text-[14px] leading-[16px] font-semibold gap-2'>
           <p className='flex flex-row gap-1'>
-            Population: <span className='font-normal'>{country?.population}</span>
+            Population: <span className='font-normal'>{country?.population.toLocaleString()}</span>
           </p>
           <p className='flex flex-row gap-1'>
             Region: <span className='font-normal'>{country?.region}</span>
