@@ -1,8 +1,13 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const CountryCard = ({ country }) => {
+  const navigate = useNavigate();
+
   return (
-    <div className='w-[264px] h-[336px] flex flex-col rounded-[5px] shadow-countryCard'>
+    <div
+      className='w-[264px] h-[336px] flex flex-col rounded-[5px] shadow-countryCard'
+      onClick={() => navigate(`country/${country?.name.common}`)}>
       <img
         src={country?.flags.png}
         alt='flag'
