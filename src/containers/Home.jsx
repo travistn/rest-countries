@@ -13,16 +13,22 @@ const Home = () => {
   const [filteredCountries, setFilteredCountries] = useState();
 
   useEffect(() => {
-    axios.get('https://restcountries.com/v3.1/all').then((res) => setCountries(res.data));
-  }, []);
-
-  useEffect(() => {
     const filterByRegion = () => {
       setFilteredCountries(countries?.filter((country) => country?.region === region));
     };
 
     filterByRegion();
   }, [region, countries]);
+
+  useEffect(() => {
+    axios.get('https://restcountries.com/v3.1/all').then((res) => setCountries(res.data));
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get(`https://restcountries.com/v3.1/name/${search}`)
+      .then((res) => setCountries(res.data));
+  }, [search]);
 
   return (
     <div className='w-screen min-h-screen'>
