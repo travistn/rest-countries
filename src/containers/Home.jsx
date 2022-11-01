@@ -9,10 +9,20 @@ const Home = () => {
   const [search, setSearch] = useState('');
   const [countryCount, setCountryCount] = useState(8);
   const [countries, setCountries] = useState();
+  const [region, setRegion] = useState('All');
+  const [filteredCountries, setFilteredCountries] = useState();
 
   useEffect(() => {
     axios.get('https://restcountries.com/v3.1/all').then((res) => setCountries(res.data));
   }, []);
+
+  useEffect(() => {
+    const filterByRegion = () => {
+      setFilteredCountries(countries?.filter((country) => country?.region === region));
+    };
+
+    filterByRegion();
+  }, [region, countries]);
 
   return (
     <div className='w-screen min-h-screen'>
@@ -33,20 +43,27 @@ const Home = () => {
             </form>
           </div>
           <div className='lg:ml-auto lg:pr-12'>
-            <select className='w-[200px] h-[48px] lg:h-[56px] mt-8 shadow-search text-[12px] lg:text-[14px] leading-[20px] lg:leading-[20px] font-normal p-4 rounded-[5px] mr-auto'>
+            <select
+              className='w-[200px] h-[48px] lg:h-[56px] mt-8 shadow-search text-[12px] lg:text-[14px] leading-[20px] lg:leading-[20px] font-normal p-4 rounded-[5px] mr-auto'
+              onChange={(e) => {
+                setRegion(e.target.value);
+              }}>
               <option>Filter by Region</option>
-              <option>Africa</option>
-              <option>America</option>
-              <option>Asia</option>
-              <option>Europe</option>
-              <option>Oceania</option>
+              <option value='Africa'>Africa</option>
+              <option value='Americas'>America</option>
+              <option value='Asia'>Asia</option>
+              <option value='Europe'>Europe</option>
+              <option value='Oceania'>Oceania</option>
+              <option value='All'>All</option>
             </select>
           </div>
         </div>
         <div className='flex flex-col lg:flex-row gap-8 lg:gap-[6rem] mt-12 lg:flex-wrap lg:p-12'>
-          {countries?.slice(0, countryCount)?.map((country) => (
-            <CountryCard country={country} />
-          ))}
+          {(region === 'All' ? countries : filteredCountries)
+            ?.slice(0, countryCount)
+            ?.map((country) => (
+              <CountryCard country={country} key={country?.cca3} />
+            ))}
         </div>
         <button
           className='w-[264px] lg:w-[400px] h-[55px] mt-8 mb-8 bg-[#1eb3df] text-white text-[18px] lg:text-[22px] font-semibold rounded-md'
