@@ -31,12 +31,12 @@ const Home = () => {
   }, [search]);
 
   return (
-    <div className='w-screen min-h-screen'>
+    <div className='w-screen min-h-screen dark:bg-color-very-dark-blue-dm'>
       <Header />
-      <div className='flex flex-col items-center dark:bg-color-very-dark-blue-dm'>
+      <div className='flex flex-col items-center'>
         <div className='flex flex-col lg:flex-row lg:w-screen'>
           <div className='lg:pl-12'>
-            <form className='flex flex-row items-center pl-8 w-[343px] lg:w-[480px] h-[48px] lg:h-[56px] mt-8 rounded-[5px] gap-4 shadow-search dark:bg-color-dark-blue'>
+            <form className='flex flex-row items-center pl-8 w-[343px] lg:w-[480px] h-[50px] lg:h-[56px] mt-8 rounded-[5px] gap-4 shadow-search dark:bg-color-dark-blue'>
               <label>
                 <AiOutlineSearch className='text-[#B2B2B2] lg:text-[20px] dark:text-white' />
               </label>
@@ -50,7 +50,7 @@ const Home = () => {
           </div>
           <div className='lg:ml-auto lg:pr-12'>
             <select
-              className='w-[200px] h-[48px] lg:h-[56px] mt-8 shadow-search text-[12px] lg:text-[14px] leading-[20px] lg:leading-[20px] font-normal p-4 rounded-[5px] mr-auto dark:bg-color-dark-blue dark:text-white'
+              className='w-[200px] h-[50px] lg:h-[56px] mt-8 shadow-search text-[14px] lg:text-[14px] leading-[20px] lg:leading-[20px] font-normal p-4 rounded-[5px] mr-auto dark:bg-color-dark-blue dark:text-white'
               onChange={(e) => {
                 setRegion(e.target.value);
               }}>
