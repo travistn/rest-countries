@@ -6,7 +6,7 @@ const CountryCard = ({ country }) => {
 
   return (
     <div
-      className='w-[264px] h-[336px] flex flex-col rounded-[5px] shadow-countryCard'
+      className='w-[264px] h-[336px] flex flex-col rounded-[5px] shadow-countryCard lg:hover:cursor-pointer lg:hover:bg-gray-100'
       onClick={() => navigate(`country/${country?.name.common}`)}>
       <img
         src={country?.flags.png}
