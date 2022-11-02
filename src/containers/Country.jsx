@@ -24,11 +24,11 @@ const Country = () => {
   }, [country?.borders]);
 
   return (
-    <div className='w-screen min-h-screen'>
+    <div className='w-screen min-h-screen dark:bg-color-very-dark-blue-dm'>
       <Header />
       <div className='flex flex-col p-8 lg:p-16 gap-8'>
         <button
-          className='w-[104px] h-[32px] lg:w-[136px] lg:h-[40px] flex flex-row items-center justify-center gap-2 text-[14px] lg:text-[16px] leading-[20px] rounded-[2px] shadow-backButton'
+          className='w-[104px] h-[32px] lg:w-[136px] lg:h-[40px] flex flex-row items-center justify-center gap-2 text-[14px] lg:text-[16px] leading-[20px] rounded-[2px] shadow-backButton dark:bg-color-dark-blue dark:text-white'
           onClick={() => navigate(-1)}>
           <BiArrowBack className='text-[16px] lg:text-[18px]' />
           Back
@@ -39,7 +39,7 @@ const Country = () => {
             alt='flag'
             className='w-[320px] h-[229px] lg:w-[560px] lg:h-[401px] rounded-md'
           />
-          <div className='flex flex-col gap-4 lg:ml-12'>
+          <div className='flex flex-col gap-4 lg:ml-12 dark:text-white'>
             <h5 className='text-[22px] lg:text-[32px] leading-[30px] lg:leading-[44px] font-extrabold'>
               {country?.name.common}
             </h5>
@@ -94,7 +94,7 @@ const Country = () => {
                 {borderCountries ? (
                   borderCountries?.map((border) => (
                     <button
-                      className='w-[100px] lg:w-[120px] h-[32px] lg:h-[40px] text-[12px] lg:text-[14px] leading-[16px] lg:leading-[19px] shadow-borderCountry rounded-[2px] lg:hover:cursor-pointer lg:hover:bg-gray-100'
+                      className='w-[100px] lg:w-[120px] h-[32px] lg:h-[40px] text-[12px] lg:text-[14px] leading-[16px] lg:leading-[19px] shadow-borderCountry rounded-[2px] lg:hover:cursor-pointer lg:hover:opacity-75 dark:bg-color-dark-blue'
                       onClick={() => navigate(`/country/${border?.name.common}`)}>
                       {border?.name.common}
                     </button>
